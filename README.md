@@ -1,17 +1,19 @@
-<html lang="es">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Vitvisor — Álbum Multimedia Local</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 0; background:#121212; color:#eaeaea; }
-    header { background:#000; color:#fff; padding:25px; text-align:center; font-size:30px; letter-spacing:1px; font-weight:bold; border-bottom:3px solid #cc0000; }
+<html lang="es"> 
+<head> 
+  <meta charset="utf-8" /> 
+  <meta name="viewport" content="width=device-width,initial-scale=1" /> 
+  <title>Vitvisor — Álbum Multimedia Local</title> 
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style> 
+    body { font-family: Arial, sans-serif; margin: 0; background:#121212; color:#eaeaea; } 
+    header { background:#000; color:#fff; padding:25px; text-align:center; font-size:30px; letter-spacing:1px; font-weight:bold; border-bottom:3px solid #cc0000; } 
 
-    nav { display:flex; justify-content:center; gap:40px; background:#1a1a1a; padding:18px; border-bottom:2px solid #cc0000; }
-    nav a { color:#fff; text-decoration:none; font-weight:bold; font-size:20px; padding:8px 16px; border-radius:10px; transition:0.2s; }
-    nav a:hover { background:#cc0000; }
+    nav { display:flex; justify-content:center; gap:40px; background:#1a1a1a; padding:18px; border-bottom:2px solid #cc0000; } 
+    nav a { color:#fff; text-decoration:none; font-weight:bold; font-size:20px; padding:8px 16px; border-radius:10px; transition:0.2s; } 
+    nav a:hover { background:#cc0000; } 
 
-    section { padding:35px; min-height:70vh; display:none; }
+    section { padding:35px; min-height:70vh; display:none; } 
     section.active { display:block; animation:fadeIn 0.4s ease-in-out; }
     h2 { text-align:center; margin-bottom:25px; font-size:28px; color:#cc0000; }
 
@@ -38,25 +40,26 @@
     .viewer video, .viewer img { max-width:100%; max-height:100%; border-radius:10px; }
     .close-btn { position:absolute; top:25px; right:25px; font-size:40px; color:#fff; cursor:pointer; font-weight:bold; }
     .nav-btn { color:white; background:#cc0000; border:none; padding:10px 20px; border-radius:8px; cursor:pointer; font-size:20px; }
+
     /* Text Reader Style v2 */
-  .text-page {
-    font-family: "Georgia", serif;
-    font-size: 1.15rem;
-    line-height: 1.75;
-    color: #222;
-    background: #f5f1e8;
-    padding: 40px;
-    border-radius: 16px;
-    margin: 0 auto;
-    max-width: 750px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
-  }
-  .text-viewer-dark .text-page {
-    background: #1e1e1e;
-    color: #e2e2e2;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-  }
-</style>
+    .text-page {
+      font-family: "Georgia", serif;
+      font-size: 1.15rem;
+      line-height: 1.75;
+      color: #222;
+      background: #f5f1e8;
+      padding: 40px;
+      border-radius: 16px;
+      margin: 0 auto;
+      max-width: 750px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    }
+    .text-viewer-dark .text-page {
+      background: #1e1e1e;
+      color: #e2e2e2;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+  </style>
 </head>
 <body>
 <header>Álbum Multimedia Vitvisor (Local)</header>
@@ -82,11 +85,8 @@
 </div>
 
 <script>
-/* CONFIGURACIÓN PARA USO LOCAL */
-/* Cambia las rutas por carpetas reales de tu PC */
-
 const VIDEOS = [
-  { title:"Instalación ubuntu", thumb:"videos/thumb_win10.jpg", src:"ubuntu.mp4" },
+  { title:"Instalación Windows 10", thumb:"videos/thumb_win10.jpg", src:"videos/win10.mp4" },
   { title:"Montaje de PC", thumb:"videos/thumb_pc.jpg", src:"videos/pc.mp4" },
   { title:"Linux – Nivel Básico", thumb:"videos/thumb_linux.jpg", src:"videos/linux.mp4" },
   { title:"Curso Redes — Parte 1", thumb:"videos/thumb_redes.jpg", src:"videos/redes1.mp4" }
@@ -168,13 +168,22 @@ function openMagazine(pages){
 
 function updateMagazinePage(){
   const content = document.getElementById("viewerContent");
-  content.innerHTML = `
-    <img src="${currentPages[currentPage]}">
-    <div style="text-align:center; margin-top:18px;">
-      <button class="nav-btn" onclick="prevPage()">◀</button>
-      <span style="color:white; margin:0 15px; font-size:20px;">${currentPage+1} / ${currentPages.length}</span>
-      <button class="nav-btn" onclick="nextPage()">▶</button>
-    </div>`;
+  const page = currentPages[currentPage];
+  if(page.type === "text"){
+    content.innerHTML = `<div class="text-page">${page.content}</div>
+      <div style="text-align:center; margin-top:18px;">
+        <button class="nav-btn" onclick="prevPage()">◀</button>
+        <span style="color:white; margin:0 15px; font-size:20px;">${currentPage+1} / ${currentPages.length}</span>
+        <button class="nav-btn" onclick="nextPage()">▶</button>
+      </div>`;
+  } else if(page.type === "image"){
+    content.innerHTML = `<img src="${page.content}">
+      <div style="text-align:center; margin-top:18px;">
+        <button class="nav-btn" onclick="prevPage()">◀</button>
+        <span style="color:white; margin:0 15px; font-size:20px;">${currentPage+1} / ${currentPages.length}</span>
+        <button class="nav-btn" onclick="nextPage()">▶</button>
+      </div>`;
+  }
 }
 
 function prevPage(){ if(currentPage>0){ currentPage--; updateMagazinePage(); } }
@@ -186,5 +195,5 @@ loadVideos();
 loadMagazines();
 </script>
 
-</body>
+</body> 
 </html>
