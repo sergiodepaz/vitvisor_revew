@@ -86,7 +86,7 @@
 
 <script>
 const VIDEOS = [
-  { title:"Instalación ubuntu", thumb:"videos/thumb_win10.jpg", src:"ubuntu.mp4" },
+  { title:"Instalación ubuntu", thumb:"favicon.png", src:"ubuntu.mp4" },
   { title:"Montaje de PC", thumb:"videos/thumb_pc.jpg", src:"videos/pc.mp4" },
   { title:"Linux – Nivel Básico", thumb:"videos/thumb_linux.jpg", src:"videos/linux.mp4" },
   { title:"Curso Redes — Parte 1", thumb:"videos/thumb_redes.jpg", src:"videos/redes1.mp4" },
