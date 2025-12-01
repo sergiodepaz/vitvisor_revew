@@ -1,3 +1,4 @@
+<!doctype html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
@@ -38,7 +39,25 @@
     .viewer video, .viewer img { max-width:100%; max-height:100%; border-radius:10px; }
     .close-btn { position:absolute; top:25px; right:25px; font-size:40px; color:#fff; cursor:pointer; font-weight:bold; }
     .nav-btn { color:white; background:#cc0000; border:none; padding:10px 20px; border-radius:8px; cursor:pointer; font-size:20px; }
-  </style>
+    /* Text Reader Style v2 */
+  .text-page {
+    font-family: "Georgia", serif;
+    font-size: 1.15rem;
+    line-height: 1.75;
+    color: #222;
+    background: #f5f1e8;
+    padding: 40px;
+    border-radius: 16px;
+    margin: 0 auto;
+    max-width: 750px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+  }
+  .text-viewer-dark .text-page {
+    background: #1e1e1e;
+    color: #e2e2e2;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+</style>
 </head>
 <body>
 <header>Álbum Multimedia Vitvisor (Local)</header>
