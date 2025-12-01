@@ -100,6 +100,7 @@ const MAGAZINES = [
     cover: "revistas/redes1/portada.jpg",
     pages: [
       { type: "text", content: "Introducción a redes: conceptos fundamentales, topologías y protocolos base." },
+      { type: "text", content: "Introducción a redes: conceptos fundamentales, topologías y protocolos base." },
       { type: "text", content: "Configuración IP: direccionamiento, máscara, puerta de enlace y pruebas con ping." },
       { type: "text", content: "Seguridad básica: firewall, NAT, filtrado y contramedidas habituales." }
     ]
