@@ -4,7 +4,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" /> 
   <title>Vitvisor — Álbum Multimedia Local</title> 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.ico">
+  <link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
+
   <style> 
     body { font-family: Arial, sans-serif; margin: 0; background:#121212; color:#eaeaea; } 
     header { background:#000; color:#fff; padding:25px; text-align:center; font-size:30px; letter-spacing:1px; font-weight:bold; border-bottom:3px solid #cc0000; } 
